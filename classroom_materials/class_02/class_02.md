@@ -82,7 +82,6 @@ As always you are free to not use Live Share just so long that you are able to c
 
 ## Code Spell-Checking
 In VS code you can use a code spell-checker called a linter which will help debug and write prettier code. I recommend enabling this especially when working in groups. It might however cause some initial frustration, but I promise you that your code will be more readable after. Companies typically mandate some kind of linter so getting it under your skin is recommended. You can set it up following [these instructions](https://code.visualstudio.com/docs/python/linting). I personally use and recommend flake8, but using any linter is fine. 
-
 ---
 
 ## Materials used in Class

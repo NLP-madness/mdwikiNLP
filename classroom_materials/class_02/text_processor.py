@@ -12,6 +12,7 @@ I suggest you start from the top and for each function:
     1) discuss potential solution (e.g. sentence segmentation splitting by ".")
     2) implement the simplest solution first for each function
     3) go back and improve upon the initial function
+    
 
 for class 2 it would be ideal if you have a simple version of the following
 functions:
@@ -28,6 +29,7 @@ Additional stuff which you might add is:
     Add plotting functionality for dependency trees
 """
 
+import re
 
 def sentence_segment(txt):
     """
@@ -38,8 +40,23 @@ def sentence_segment(txt):
     >>> sentence_segment(txt)
     ["NLP is very cool", "It is also useful"]
     """
-    pass
 
+    splittet = re.split("\\.", txt) 
+
+    return(splittet)
+
+'''
+** look into re.compile. 
+** look at "look ahead". 
+** NB: how do we make sure not 
+to split A. B. Bernhard (for instance)
+'''
+    
+
+
+txt = "This is a sentence. Another one"
+txt_new = sentence_segment(txt)
+print(txt_new)
 
 def tokenize(sentences):
     """
@@ -82,7 +99,7 @@ def ner_regex(tokenlist):
 
 
 def token_frequencies(tokenlist):
-    """
+n    """
     tokenlist (list): A list of tokens
 
     return a list of tokens and their frequencies
