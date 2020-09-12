@@ -17,7 +17,6 @@ for class 2 it would be ideal if you have a simple version of the following
 functions:
     sentence_segment
     tokenize
-    n_grams
     ner_regex
 
 Additional stuff which you might add is:
@@ -32,6 +31,9 @@ Additional stuff which you might add is:
 def sentence_segment(txt):
     """
     txt (str): Text which you want to be segmented into sentences.
+
+    hint: look up the re.split() function in the re module and 
+    and .split() method for strings.
 
     Example:
     >>> txt = "NLP is very cool. It is also useful"
@@ -57,6 +59,7 @@ def n_grams(tokenlist, n):
     """
     tokenlist (list): A list of tokens
     n (int): Indicate the n in n-gram. n=2 denotes bigrams
+    Indicate the n in n-gram. n=2 denotes bigrams
 
     creates n-grams from a given tokenlist
 
@@ -68,15 +71,22 @@ def n_grams(tokenlist, n):
     pass
 
 
-def ner_regex(tokenlist):
+def ner_regex(sentence_list):
     """
-    tokenlist (list): A list of tokens
+    sentence_list (list): a list of sentences
 
-    peforms named entity recognition using regular expressions
+    Named entity recognition using regular expressions.
+
+    alternative options:could also be a list of tokens and/or the raw text.
+    This will result in how you can you can use it later on, but for now
+    let's not dwell too much on this.
+
+    hint: look into the re package/module
+
     Example:
-    >>> sent = ["Karl Friston is very cool"]
+    >>> sent = [["Karl Friston is very cool"], ["Darwin is kick-ass"]]
     >>> ner_regex(sent)
-    ["Karl Friston"]
+    [["Karl Friston"], ["Darwin"]]
     """
     pass
 
@@ -84,8 +94,11 @@ def ner_regex(tokenlist):
 def token_frequencies(tokenlist):
     """
     tokenlist (list): A list of tokens
+    could also be a list of token
 
     return a list of tokens and their frequencies
+
+    hint: look up the Counter class for python
 
     Example:
     >>> tokens = [["NLP", "is", "very", "cool"],
@@ -101,6 +114,8 @@ def lemmatize_stanza(tokenlist):
     tokenlist (list): A list of tokens
 
     lemmatize a tokenlist using stanza
+
+    hint: examine the stanza_example.py script
     """
     pass
 
@@ -110,6 +125,8 @@ def postag_stanza(tokenlist):
     tokenlist (list): A list of tokens
 
     add a part-of-speech (POS) tag to each tokenlist using stanza
+
+    hint: examine the stanza_example.py script
     """
     pass
 
@@ -120,12 +137,22 @@ class Text():
         self.tokens = tokenize(self.sentences)
 
     def ner(self, method="regex"):
-        res = ner_regex(self.tokens)
+        if method == "regex":
+            res = ner_regex(self.tokens)
+        else:
+            raise ValueError(f"method {method} is not a valid method")
         return res
+
+    # add methods to do pos-tagging, lemmatization
+    # n-grams and token frequencies
 
     def get_df(self):
         """
         returns a dataframe containing the columns:
-        sentence number, token, lemma, pos-tag, named-entity
+        sentence number, token, lemma, pos-tag
+        andd optionally named-entities
         """
         pass
+
+    # add methods to extract tokens, sentences
+    # ner, pos-tags etc.

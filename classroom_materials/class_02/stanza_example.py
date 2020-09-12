@@ -3,6 +3,10 @@ This is an example of how to use stanza
 """
 
 
+
+
+
+
 def stanza_example(tokenlist, processors, return_df=True,
                    print_dependency=False):
     """
@@ -34,10 +38,16 @@ def stanza_example(tokenlist, processors, return_df=True,
     return res
 
 
+
+
 tl = [['This', 'is', 'token.ization', 'done', 'my', 'way!'],
       ['Sentence', 'split,', 'too!'],
       ['Las', 'Vegas', 'is', 'great', 'city']]
 stanza_example(tokenlist=tl, processors='tokenize,pos')  # POS tag only
 
 tl = [tl[2]]  # only use one sentence
+stanza_example(tokenlist=tl, processors='tokenize,lemma,pos,depparse')
+
+
+tl = [["green", "colorless", "ideas", "sleep", "furiously"]]
 stanza_example(tokenlist=tl, processors='tokenize,lemma,pos,depparse')

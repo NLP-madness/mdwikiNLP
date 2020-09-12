@@ -57,7 +57,7 @@ Lesson Plan
 | 36   | [Introduction](class1.md)         | [Introduction and Setup](classroom_materials/class_01/class_01.md)        |                  |  [Intro survey](https://forms.gle/bpX7XwtbLnQA1niq7), [Join Slack](https://join.slack.com/t/nlpf20/shared_invite/zt-gt1xt61j-9MT8V84bQ1AeJUOF5nnTRg)            |
 | 37   | [Text processing](class2.md)      | [Preprocessing, Counts, and Collocations](classroom_materials/class_02/class_02.md) | [Study group exercises](class2.md)   | [Basic Python quiz](python.md) 		|
 | 38   | [Language modeling](class3.md)    | [Lemmatization and tagging](classroom_materials/class_03/class_03.md)| Ngrams			   | [HW1 Spamlord](https://classroom.github.com/g/HUL5pc63)|
-| 39   | [Classification I](class4.md)     | Naive Bayes from scratch| NaiveBayes           |                        |
+| 39   | [Classification I](class4.md)     | [Naive Bayes from scratch](classroom_materials/class_04/class_04.md)| NaiveBayes           |                        |
 | 40   | [Classification II](class5.md)    | Scikit-learn 			| 				       |[HW2 Sentiment](https://classroom.github.com/g/qUNponW_) |
 | 41   | [Information retrieval](class6.md)| Vectorization			| IR exercises  	   |                		|
 | 42   | [Project prep](class_break.md)    | BREAK                  | BREAK                | BREAK                  |
