@@ -1,6 +1,3 @@
-#import stanza
-#stanza.download('en')
-#stanza.download('da')
 
 """
 This script contain an example Text class
@@ -32,32 +29,32 @@ Additional stuff which you might add is:
     Add plotting functionality for dependency trees
 """
 
-#set-up: 
+#set-up:
 
-#string to test on: 
-txt = """These are several sentences. They will be splittet a lot. 
-It is inevitable. It will happen although J.D. Gould
-would like it to be otherwise, or se he says. 
+#string to test on:
+txt = """These are several sentences. They will be splittet a lot. It is inevitable. It will happen although J.D. Gould
+would like it to be otherwise, or se he says.
 This sentence tests (or intends to) test parenthes
 and exclamations! At least that was the plan.
-Another thing one might do is the following: testing this. 
+Another thing one might do is the following: testing this.
 Abbreviations like e.g. are tricky. Does this come to mind?
 I thought so. The little Martin Jr. thought it was good."""
 
-#importing re: 
+#importing re:
 import re
 
 #actual function:
 def sentence_segment(txt):
     """
-    txt (str): Text which you want to be segmented into sentences.
+    txt (str): Text which you want to be segmented into
+    sentences.
 
     Example:
     >>> txt = "NLP is very cool. It is also useful"
     >>> sentence_segment(txt)
     ["NLP is very cool", "It is also useful"]
     """
-    
+
     p1 = "(?<!\w\.\w)(?<![A-Z][a-z])[!:?.]\s"
     #https://regex101.com/r/nG1gU7/27 (inspiration).
 
@@ -68,7 +65,7 @@ def sentence_segment(txt):
 
 #questions: is re.compile smarter in some way?
 
-#testing the function: 
+#testing the function:
 segmented = sentence_segment(txt)
 print(segmented)
 
@@ -85,11 +82,11 @@ def tokenize(sentences):
     output = [w.split() for w in sentences]
     return(output)
 
-#testing tokenize: 
+#testing tokenize:
 tokenized = tokenize(segmented)
 print(tokenized)
 
-#this one does it for one list: 
+#this one does it for one list:
 def n_grams(tokenlist, n):
     """
     tokenlist (list): A list of tokens
@@ -103,28 +100,28 @@ def n_grams(tokenlist, n):
     [["NLP", "is"], ["is", "very"], ["very", "cool"]]
     """
 
-    #initialization: 
-    master_list = [] #empty list: 
+    #initialization:
+    master_list = [] #empty list:
     sub_list = [] #empty list
 
     #for loop: (list comprehension?)
     for i in range(len(tokenlist)-(n-1)):
         for j in range(n):
             sub_list.append(tokenlist[i+j]) #append to sub list.
-        master_list.append(sub_list) #append to master list. 
-        sub_list = [] #clear the sub-list. 
-    
-    #return: 
+        master_list.append(sub_list) #append to master list.
+        sub_list = [] #clear the sub-list.
+
+    #return:
     return(master_list)
 
-#testing n_grams: 
+#testing n_grams:
 tokenlist = ["NLP", "is", "very", "useful"]
 print(n_grams(tokenlist, 1))
 print(n_grams(tokenlist, 2))
 print(n_grams(tokenlist, 3))
 print(n_grams(tokenlist, 4))
 
-#this one does it for list of lists: 
+#this one does it for list of lists:
 def n_grams2(tokenlist, n):
     """
     tokenlist (list): A list of tokens
@@ -138,36 +135,40 @@ def n_grams2(tokenlist, n):
     [["NLP", "is"], ["is", "very"], ["very", "cool"]]
     """
 
-    #initialization: 
-    lst_complete = [] #empty list. 
+    #initialization:
+    lst_complete = [] #empty list.
     lst_sentence = [] #empty list.
     lst_word = [] #empty list.
 
-    for i in range(len(tokenized)): #sentences: 
-        for j in range(len(tokenized[i])-(n-1)): 
-            for k in range(n): 
-                lst_word.append(tokenized[i][j+k]) #append to word list.
+    for i in range(len(tokenlist)): #sentences:
+        for j in range(len(tokenlist[i])-(n-1)):
+            for k in range(n):
+                lst_word.append(tokenlist[i][j+k]) #append to word list.
             lst_sentence.append(lst_word) #append to sentence list.
             lst_word = [] #clear word list.
         lst_complete.append(lst_sentence)
-        lst_sentence = [] #clear sentence list. 
-    
-    #return: 
+        lst_sentence = [] #clear sentence list.
+
+    #return:
     return(lst_complete)
 
-#testing on subset for clarity: 
+
+#testing on subset for clarity:
 tokenized = tokenized[0:3]
 print(tokenized)
 
-#for different n: 
+#for different n:
 print(n_grams2(tokenized, 1))
 print(n_grams2(tokenized, 2))
 print(n_grams2(tokenized, 3))
 
-#for moving forward: 
+#for moving forward:
 n_grammed = n_grams2(tokenized, 2)
 
-#Named entity recognition: 
+#Named entity recognition:
+#Obviously this cannot distinguish anything 
+#Starting a sentence (e.g., "I am" from "Michelle is").
+#So, it is very insufficient. 
 def ner_regex(tokenlist):
     """
     tokenlist (list): A list of tokens
@@ -178,21 +179,24 @@ def ner_regex(tokenlist):
     >>> ner_regex(sent)
     [["Karl Friston"], ["Darwin"]]
     """
-    pass
+    #capture group and non-capture groups: 
+    pattern = re.compile(r"((?:[A-Z][a-z]+)(?:\s[A-Z][a-z]+)?)")
+    
+    #using findall and compile from re. 
+    lst = []
+    for i in txt:
+        unlisted = "".join(i)
+        recognized = re.findall(pattern, unlisted)
+        lst.append(recognized)
+    return(lst)
 
-#testing the function: 
+#testing the function:
 txt = [["Karl Friston is very cool"], ["Darwin is kick-ass"]]
+print(ner_regex(txt)) 
 
-#using re.compile() and re.findall() and capture group: (:)
-pattern = re.compile(r"(?<!\.\s)([A-Z][a-z]+)(\s[A-Z][a-z]+)?") #r in front. 
-recognized = re.findall(pattern, txt)
 
-lst = []
-for i in txt: 
-    unlisted = "".join(i)
-    recognized = re.findall(pattern, unlisted)
-    lst.append(recognized)
-print(lst)
+#import Counter: 
+from collections import Counter 
 
 def token_frequencies(tokenlist):
     """
@@ -206,16 +210,61 @@ def token_frequencies(tokenlist):
     >>> token_frequencies(sent)
     {"NLP": 1, "is": 2, "very": 1, "cool": 1, "It": 1, "also": 1, "useful": 1}
     """
-    pass
+    #initialize our counter/dictionary: 
+    token_frq = Counter()
 
+    #unlist (we don't care about which sentence for now): 
+    #this probably only works for "once" nested..
+    tokens_list = [item for sublist in tokens for item in sublist]
 
-def lemmatize_stanza(tokenlist):
+    #https://docs.python.org/2/library/collections.html
+    for word in tokens_list: 
+        token_frq[word] += 1
+
+    return(token_frq)
+
+#testing the function: 
+tokens = [["NLP", "is", "very", "cool"],["It", "is", "also", "useful"]]
+
+token_list = token_frequencies(tokens)
+token_list
+
+#lemmatization: 
+#stolen from Kenneth: 
+
+def lemmatize_stanza(tokenlist, processors, return_df=True,
+                   print_dependency=False):
     """
     tokenlist (list): A list of tokens
 
     lemmatize a tokenlist using stanza
     """
-    pass
+
+    import stanza
+    nlp = stanza.Pipeline(lang='en', processors=processors,
+                          tokenize_pretokenized=True)
+    doc = nlp(tokenlist)
+
+    res = [(n_sent, word.text, word.lemma, word.upos, word.xpos, word.head, word.deprel)
+           for n_sent, sent in enumerate(doc.sentences)
+           for word in sent.words]
+
+    if return_df:
+        import pandas as pd
+        return pd.DataFrame(res)
+    return res
+
+
+#testing the function: 
+tl = [['This', 'is', 'tokenization', 'done', 'my', 'way!'],
+      ['Sentence', 'split,', 'too!'],
+      ['Las', 'Vegas', 'is', 'great', 'city']]
+
+#this works: 
+lemmatize_stanza(tokenlist=tl, processors='tokenize,lemma')
+
+#why doesn't this work?
+#lemmatize_stanza(tokenlist=t1, processors='lemma')
 
 
 def postag_stanza(tokenlist):

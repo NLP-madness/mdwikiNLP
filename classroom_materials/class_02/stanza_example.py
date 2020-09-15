@@ -2,11 +2,6 @@
 This is an example of how to use stanza
 """
 
-
-
-
-
-
 def stanza_example(tokenlist, processors, return_df=True,
                    print_dependency=False):
     """
@@ -36,8 +31,6 @@ def stanza_example(tokenlist, processors, return_df=True,
         import pandas as pd
         return pd.DataFrame(res)
     return res
-
-
 
 
 tl = [['This', 'is', 'token.ization', 'done', 'my', 'way!'],
