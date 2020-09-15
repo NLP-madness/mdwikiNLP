@@ -37,7 +37,7 @@ would like it to be otherwise, or se he says.
 This sentence tests (or intends to) test parenthes
 and exclamations! At least that was the plan.
 Another thing one might do is the following: testing this.
-Abbreviations like e.g. are tricky. Does this come to mind?
+Abbreviations like are tricky. Does this come to mind?
 I thought so. The little Martin Jr. thought it was good."""
 
 #importing re:
@@ -56,6 +56,13 @@ def sentence_segment(txt):
     """
 
     p1 = "(?<!\w\.\w)(?<![A-Z][a-z])[!:?.]\s"
+    # [!:?.] --> trying to match.  
+    # \s (also matching to delete). Whitespace 
+    # (?<!\w\.\w) catches e.g. and the likes. 
+    # (?<![A-Z][a-z]) catches Ms. Smith, doesn't split Ms. 
+    # --> still lacking Mrs. Smith (to do). 
+    # newline? 
+
     #https://regex101.com/r/nG1gU7/27 (inspiration).
 
     #use our regex:
@@ -79,7 +86,7 @@ def tokenize(sentences):
     >>> tokenize(sent)
     [["NLP", "is", "very", "cool"], ["It", "is", "also", "useful"]]
     """
-    output = [w.split() for w in sentences]
+    output = [b.split() for b in sentences]
     return(output)
 
 #testing tokenize:
@@ -105,10 +112,10 @@ def n_grams(tokenlist, n):
     sub_list = [] #empty list
 
     #for loop: (list comprehension?)
-    for i in range(len(tokenlist)-(n-1)):
-        for j in range(n):
+    for i in range(len(tokenlist)-(n-1)): #loop through is dependent on n-1 (what gram we do)
+        for j in range(n): #how many things we will append
             sub_list.append(tokenlist[i+j]) #append to sub list.
-        master_list.append(sub_list) #append to master list.
+        master_list.append(sub_list) #append sub list to master list.
         sub_list = [] #clear the sub-list.
 
     #return:
