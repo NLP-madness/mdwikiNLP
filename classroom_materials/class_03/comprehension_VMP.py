@@ -2,26 +2,14 @@
 import sys
 
 #setting path to the file: 
-sys.path.insert(1, '../class_02')
+sys.path.insert(1, '../class_02') 
 
 #importing functions from there: 
 import class_02_VMP as vmp
 
-#task 3.8 (unsmoothed unigrams and bigrams): 
-txt = """
-There are many variations of passages of Lorem Ipsum available, 
-but the majority have suffered alteration in some form, 
-by injected humour, or randomised words which don't look even 
-slightly believable. If you are going to use a passage of Lorem Ipsum, 
-you need to be sure there isn't anything embarrassing hidden in the 
-middle of text. All the Lorem Ipsum generators on the Internet tend 
-to repeat predefined chunks as necessary, making this the first 
-true generator on the Internet. It uses a dictionary of over 200 
-Latin words, combined with a handful of model sentence structures, 
-to generate Lorem Ipsum which looks reasonable. The generated 
-Lorem Ipsum is therefore always free from repetition, injected humour, 
-or non-characteristic words etc."""
-
+#task 3.8 (un-smoothed unigrams and bigrams): 
+txt = """I am the best blue cat. I sat in the sand. 
+When I sat in the world"""
 
 #segment into sentences: 
 txt_seg = vmp.sentence_segment(txt)
@@ -49,6 +37,40 @@ from collections import Counter
 print(unigram_flat)
 print(bigrams_flat)
 
-def grams(n_gram_list, n): 
-    
+#token frequencies? 
+unigrams_frq = vmp.token_frequencies(unigram_flat)
+unigrams_frq
 
+bigrams_frq = vmp.token_frequencies(bigrams_flat)
+bigrams_frq
+
+#pandas? 
+#issues: comma and end/start of sentence: 
+import pandas as pd 
+
+#as dataframe: 
+bigrams_df = pd.DataFrame(bigrams_flat, columns=["first", "second"])
+print(bigrams_df.head(n = 10)) 
+
+#as "matrix": 
+bigrams_matrix = bigrams_df.groupby(['first','second']).size().unstack(fill_value=0)
+bigrams_matrix
+
+#as probabilities: 
+## df.sum(axis=1) (sum over rows): 
+bigrams_matrix.loc[:, 0:] = bigrams_matrix.iloc[:, 0:].div(bigrams_matrix.sum(axis = 1), axis=0)
+bigrams_matrix.head(n = 10)
+
+##### Generate Random Sequences ###### 
+
+
+
+### issues: 
+# 1. start/end of sentence. 
+# 2. commas and other things that don't end sentences but are not words. 
+# 2.1. e.g., we have both "Ipsum", and "Ipsum," as different words.
+#       (tokenize).  
+# 3. do it for unigrams. 
+# 
+
+## Example / Test: 

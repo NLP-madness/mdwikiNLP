@@ -77,6 +77,7 @@ segmented = sentence_segment(txt)
 print(segmented)
 
 ### using a list comprehension:
+## probably this is the issue (i.e., remove comma).
 def tokenize(sentences):
     """
     sentences (list): Sentences which you want to be tokenized
@@ -201,7 +202,6 @@ def ner_regex(tokenlist):
 txt = [["Karl Friston is very cool"], ["Darwin is kick-ass"]]
 print(ner_regex(txt)) 
 
-
 #import Counter: 
 from collections import Counter 
 
@@ -222,7 +222,7 @@ def token_frequencies(tokenlist):
 
     #unlist (we don't care about which sentence for now): 
     #this probably only works for "once" nested..
-    tokens_list = [item for sublist in tokens for item in sublist]
+    tokens_list = [item for sublist in tokenlist for item in sublist]
 
     #https://docs.python.org/2/library/collections.html
     for word in tokens_list: 
