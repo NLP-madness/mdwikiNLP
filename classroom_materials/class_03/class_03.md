@@ -10,6 +10,7 @@
    - Make sure you are familiar with pandas dataframes, e.g. using [learnpython.org](https://www.learnpython.org/en/Pandas_Basics)
  - Recommended: 
    - Download and set up [Kite](https://www.kite.com)
+   - Turn on [format on save](https://code.visualstudio.com/updates/v1_49#_only-format-modified-text), which auto format you code when saved
    - If you find your python skills challenged I would recommend watching [this video](https://www.youtube.com/watch?v=rfscVS0vtbw) or looking into [this free book](https://automatetheboringstuff.com)
  - Optional:
    - read up on state-of-the-art Tokenization and implement it (see section). It is not that hard.
@@ -20,19 +21,27 @@ We will continue where we left of in the previous class.
   - Kite, what is it and why it might be useful
   - Script structure and importing functions
   - Introduction to the `Text` class and Pandas
-  - Group work on the 
+  - Group work on the `Text` class and functions
 
 before the next class (class 3) you should have finished the `Text` class and the functions:
-* `n_grams()`
-* `token_frequencies`
-* `lemmatize_stanza`
-* `postag_stanza`
+
+`n_grams()`
+
+`token_frequencies()`
+
+`lemmatize_stanza()`
+
+`postag_stanza()`
 
 
 ---
 
 ## Kite
 [Kite](https://www.kite.com) is an intelligent autocomplete for Python. It contains a short tutorial when installed. As it is very short I recommend going through it. Kite is free and you can even use their pro license with if you create a user using a valid AU email.
+
+
+## Format on Save
+VS codes latest update ([august 2020](https://code.visualstudio.com/updates/v1_49#_only-format-modified-text)) includes a format on save functionality which autoformats you code when you save. This should hopefully save you quite a bit of time. When turned on and opening a python script it will prompt you to install an autoformat tool for python, I would recommend black.
 
 
 ## (Optional) State-of-the-art Tokenization
