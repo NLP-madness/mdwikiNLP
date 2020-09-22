@@ -29,6 +29,7 @@ Additional stuff which you might add is:
 """
 # set-up:
 
+
 # string to test on:
 txt = """These are several sentences. They will be splittet a lot. 
 It is inevitable. It will happen although J.D. Gould
@@ -322,7 +323,7 @@ def postag_stanza(tokenlist):
     pass
 
     nlp = stanza.Pipeline(
-        lang="en", processors="pos,tokenize", tokenize_pretokenized=True
+        lang="en", processors="pos,tokenize,lemma,mwt", tokenize_pretokenized=True
     )
     doc = nlp(tokenlist)
 
@@ -346,14 +347,18 @@ tl = [
     ["Las", "Vegas", "is", "great", "city"],
 ]
 
-
 postag_stanza(tokenlist=tl, return_df=True)
 
 
 class Text:
     def __init__(self, txt):
-        self.sentences = sentence_segment()
+        self.sentences = sentence_segment(self.txt)
         self.tokens = tokenize(self.sentences)
+        self.n_grams = n_grams(self.tokenlist, n)
+        self.ner_regex = ner_regex(self.sentence_list)
+        self.token_frequencies = token_frenquencies(self.tokenlist)
+        self.lemmatize = lemmatize.stanza(self.tokenlist)
+        self.postag = postag_stanza(self.tokenlist)
 
     def ner(self, method="regex"):
         if method == "regex":
@@ -362,6 +367,35 @@ class Text:
             raise ValueError(f"method {method} is not a valid method")
         return res
 
+    def lemmatize(self, method="tokenlist"):
+        if method == "tokenlist":
+            res = lemmatize_stanza(self.tokenlist)
+        else:
+            raise ValueError(f"method {method} is not a valid method")
+        return res
+    
+    def postag(self, method="tokenlist"):
+        if method == "tokenlist":
+            res = postag_stanza(self.tokenlist)
+        else:
+            raise ValueError(f"method {method} is not a valid method")
+        return res
+
+    def n_grams(self, method="tokenlist"):
+        if method == "tokenlist":
+            res = n_grams(self.tokenlist, n)
+        else:
+            raise ValueError(f"method {method} is not a valid method")
+        return res
+
+    def token_f(self, method="tokenlist"):
+        if method == "tokenlist":
+            res = token_frequencies(self.tokenlist)
+        else:
+            raise ValueError(f"method {method} is not a valid method")
+        return res
+
+    
     # add methods to do pos-tagging, lemmatization
     # n-grams and token frequencies
 
@@ -372,6 +406,13 @@ class Text:
         andd optionally named-entities
         """
         pass
+
+    df = pd.DataFrame(
+{"sentence number" : [4 ,5, 6],
+"token" : [token_f(),
+"lemma" : [lemmatize()]
+"pos-tag" : [postag()]},
+index = [1, 2, 3,4])
 
     # add methods to extract tokens, sentences
     # ner, pos-tags etc.
