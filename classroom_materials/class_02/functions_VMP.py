@@ -1,4 +1,9 @@
 """
+This is a document containing all of the functions
+needed to make the 'text' class. 
+"""
+
+"""
 This script contain an example Text class
 
 Each function contains:
@@ -28,11 +33,9 @@ Additional stuff which you might add is:
     Add plotting functionality for dependency trees
 """
 
-# set-up:
 
 # string to test on:
-txt = """These are several sentences. They will be splittet a lot. It is inevitable. 
-It will happen although J.D. Gould
+txt = """These are several sentences. They will be splittet a lot. It is inevitable. It will happen although J.D. Gould
 would like it to be otherwise, or se he says.
 This sentence tests (or intends to) test parenthes
 and exclamations! At least that was the plan.
@@ -40,10 +43,7 @@ Another thing one might do is the following: testing this.
 Abbreviations like are tricky. Does this come to mind?
 I thought so. The little Martin Jr. thought it was good."""
 
-# importing re:
-import re
-
-# actual function:
+## sentence segmentation:
 def sentence_segment(txt):
     """
     txt (str): Text which you want to be segmented into
@@ -54,6 +54,9 @@ def sentence_segment(txt):
     >>> sentence_segment(txt)
     ["NLP is very cool", "It is also useful"]
     """
+
+    # importing the module re:
+    import re
 
     p1 = "(?<!\w\.\w)(?<![A-Z][a-z])[!:?.]\s"
     # [!:?.] --> trying to match.
@@ -67,17 +70,22 @@ def sentence_segment(txt):
 
     # use our regex:
     splittet = [w.replace("\n", "") for w in re.split(p1, txt)]
+    splittet = [re.sub("\n|\.|\(|\)|,", "", w) for w in re.split(p1, txt)]
 
-    print(splittet)
+    # has to be done to accommodate the pipeline:
+    # list of lists instead of list..
+    sentences = [[sent] for sent in splittet if sent != ""]
+    return sentences
 
 
-# questions: is re.compile smarter in some way?
+""" Issues: getting the last dot """
 
-# testing the function:
-segmented = sentence_segment(txt)
-print(segmented)
+# testing:
+sentence_seg = sentence_segment(txt)
+print(sentence_seg)
 
-### using a list comprehension:
+## tokenization
+## using nltk?
 def tokenize(sentences):
     """
     sentences (list): Sentences which you want to be tokenized
@@ -87,15 +95,25 @@ def tokenize(sentences):
     >>> tokenize(sent)
     [["NLP", "is", "very", "cool"], ["It", "is", "also", "useful"]]
     """
-    output = [b.split() for b in sentences]
+    ## importing re:
+    import re
+
+    ## unlist (fixing issues):
+    sentences_flat = [word for w in sentences for word in w]
+
+    ## Split these: (keep words like J. D. Gould together)?
+    ## More work required here..?
+    output = [re.split("\W", b) for b in sentences_flat]
+
+    ## This
     return output
 
 
-# testing tokenize:
-tokenized = tokenize(segmented)
-print(tokenized)
+# testing:
+sentence_tok = tokenize(sentence_seg)
+print(sentence_tok)
 
-# this one does it for one list:
+## n-grams (for unnested list):
 def n_grams(tokenlist, n):
     """
     tokenlist (list): A list of tokens
@@ -126,14 +144,7 @@ def n_grams(tokenlist, n):
     return master_list
 
 
-# testing n_grams:
-tokenlist = ["NLP", "is", "very", "useful"]
-print(n_grams(tokenlist, 1))
-print(n_grams(tokenlist, 2))
-print(n_grams(tokenlist, 3))
-print(n_grams(tokenlist, 4))
-
-# this one does it for list of lists:
+## n-grams for nested list:
 def n_grams2(tokenlist, n):
     """
     tokenlist (list): A list of tokens
@@ -165,19 +176,7 @@ def n_grams2(tokenlist, n):
     return lst_complete
 
 
-# testing on subset for clarity:
-tokenized = tokenized[0:3]
-print(tokenized)
-
-# for different n:
-print(n_grams2(tokenized, 1))
-print(n_grams2(tokenized, 2))
-print(n_grams2(tokenized, 3))
-
-# for moving forward:
-n_grammed = n_grams2(tokenized, 2)
-
-# Named entity recognition:
+##  Named entity recognition:
 # Obviously this cannot distinguish anything
 # Starting a sentence (e.g., "I am" from "Michelle is").
 # So, it is very insufficient.
@@ -191,25 +190,28 @@ def ner_regex(tokenlist):
     >>> ner_regex(sent)
     [["Karl Friston"], ["Darwin"]]
     """
+
+    # import re:
+    import re
+
     # capture group and non-capture groups:
     pattern = re.compile(r"((?:[A-Z][a-z]+)(?:\s[A-Z][a-z]+)?)")
 
     # using findall and compile from re.
     lst = []
-    for i in txt:
+    for i in tokenlist:
         unlisted = "".join(i)
+        print(unlisted)
         recognized = re.findall(pattern, unlisted)
         lst.append(recognized)
     return lst
 
 
-# testing the function:
-txt = [["Karl Friston is very cool"], ["Darwin is kick-ass"]]
-print(ner_regex(txt))
+# testing:
+sentence_reg = ner_regex(sentence_seg)
+print(sentence_reg)
 
-
-# import Counter:
-from collections import Counter
+## Token frequencies
 
 
 def token_frequencies(tokenlist):
@@ -224,6 +226,9 @@ def token_frequencies(tokenlist):
     >>> token_frequencies(sent)
     {"NLP": 1, "is": 2, "very": 1, "cool": 1, "It": 1, "also": 1, "useful": 1}
     """
+    # import Counter
+    from collections import Counter
+
     # initialize our counter/dictionary:
     token_frq = Counter()
 
@@ -238,17 +243,8 @@ def token_frequencies(tokenlist):
     return token_frq
 
 
-# testing the function:
-tokens = [["NLP", "is", "very", "cool"], ["It", "is", "also", "useful"]]
-
-token_list = token_frequencies(tokens)
-token_list
-
-# lemmatization:
-# stolen from Kenneth:
-
-
-def lemmatize_stanza(tokenlist, processors, return_df=True, print_dependency=False):
+## Lemmatize using stanza (redundant now)
+def lemmatize_stanza(tokenlist, return_df=False):
     """
     tokenlist (list): A list of tokens
 
@@ -257,12 +253,43 @@ def lemmatize_stanza(tokenlist, processors, return_df=True, print_dependency=Fal
 
     import stanza
 
-    nlp = stanza.Pipeline(lang="en", processors=processors, tokenize_pretokenized=True)
+    nlp = stanza.Pipeline(
+        lang="en", processors="tokenize,lemma", tokenize_pretokenized=True
+    )
     doc = nlp(tokenlist)
 
     res = [
-        (n_sent, word.text, word.lemma, word.upos, word.xpos, word.head, word.deprel)
-        for n_sent, sent in enumerate(doc.sentences)
+        (word.lemma) for n_sent, sent in enumerate(doc.sentences) for word in sent.words
+    ]
+
+    if return_df:
+        import pandas as pd
+
+        return pd.DataFrame(res)
+    return res
+
+
+## POS-tag using stanza (redundant now):
+
+
+def postag_stanza(tokenlist, return_df=False):
+    """
+    tokenlist (list): A list of tokens
+
+    add a part-of-speech (POS) tag to each tokenlist using stanza
+    """
+
+    import stanza
+
+    nlp = stanza.Pipeline(
+        lang="en", processors="tokenize,lemma,mwt,pos", tokenize_pretokenized=True
+    )
+
+    doc = nlp(tokenlist)
+
+    res = [
+        (word.lemma, word.pos)
+        for n_sent, sent in enumerate(doc.sentences)  # n_sent sentence number?
         for word in sent.words
     ]
 
@@ -273,41 +300,46 @@ def lemmatize_stanza(tokenlist, processors, return_df=True, print_dependency=Fal
     return res
 
 
-# testing the function:
-tl = [
-    ["This", "is", "tokenization", "done", "my", "way!"],
-    ["Sentence", "split,", "too!"],
-    ["Las", "Vegas", "is", "great", "city"],
-]
-
-# this works:
-lemmatize_stanza(tokenlist=tl, processors="tokenize,lemma")
-
-# why doesn't this work?
-# lemmatize_stanza(tokenlist=t1, processors='lemma')
+### new super-function which returns everything ###
 
 
-def postag_stanza(tokenlist):
+def stanza_panda(tokenlist, return_df=True):
     """
-    tokenlist (list): A list of tokens
-
-    add a part-of-speech (POS) tag to each tokenlist using stanza
+    write doc-string.
     """
-    pass
+
+    import stanza
+
+    ## stanza stuff ##
+    nlp = stanza.Pipeline(
+        lang="en", processors="tokenize, mwt, pos, lemma", tokenize_pretokenized=True
+    )
+
+    doc = nlp(tokenlist)
+
+    ## obtained:
+    # n_sent: sentence number
+    # sent: token
+    # word.lemma: lemma
+    # word.pos: POS-tag
+    # lacking (ner)..
+
+    res = [
+        (n_sentence + 1, word.id, word.text, word.lemma, word.pos)
+        for n_sentence, sent in enumerate(doc.sentences)  # n_sent sentence number?
+        for word in sent.words
+    ]
+
+    ## return pandas dataframe ##
+    if return_df:
+        import pandas as pd
+
+        return pd.DataFrame(
+            res, columns=["sentence num", "word num", "token", "lemma", "pos"]
+        )
+    return res
 
 
-class Text:
-    def __init__(self, txt):
-        self.sentences = sentence_segment()
-        self.tokens = tokenize(self.sentences)
-
-    def ner(self, method="regex"):
-        res = ner_regex(self.tokens)
-        return res
-
-    def get_df(self):
-        """
-        returns a dataframe containing the columns:
-        sentence number, token, lemma, pos-tag, named-entity
-        """
-        pass
+# testing:
+print(sentence_tok)
+print(stanza_panda(sentence_tok))
