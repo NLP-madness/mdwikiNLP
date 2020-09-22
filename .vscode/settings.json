@@ -1,3 +1,4 @@
 {
-    "python.pythonPath": "/opt/anaconda3/envs/nlp/bin/python"
+    "python.pythonPath": "/opt/anaconda3/envs/nlp/bin/python",
+    "python.formatting.provider": "black"
 }

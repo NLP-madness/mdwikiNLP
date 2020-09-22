@@ -12,12 +12,12 @@ I suggest you start from the top and for each function:
     1) discuss potential solution (e.g. sentence segmentation splitting by ".")
     2) implement the simplest solution first for each function
     3) go back and improve upon the initial function
+    
 
 for class 2 it would be ideal if you have a simple version of the following
 functions:
     sentence_segment
     tokenize
-    n_grams
     ner_regex
 
 Additional stuff which you might add is:
@@ -27,12 +27,11 @@ Additional stuff which you might add is:
     Add plotting functionality for word frequencies
     Add plotting functionality for dependency trees
 """
-
 # set-up:
 
 # string to test on:
-txt = """These are several sentences. They will be splittet a lot. It is inevitable. 
-It will happen although J.D. Gould
+txt = """These are several sentences. They will be splittet a lot. 
+It is inevitable. It will happen although J.D. Gould
 would like it to be otherwise, or se he says.
 This sentence tests (or intends to) test parenthes
 and exclamations! At least that was the plan.
@@ -40,14 +39,15 @@ Another thing one might do is the following: testing this.
 Abbreviations like are tricky. Does this come to mind?
 I thought so. The little Martin Jr. thought it was good."""
 
-# importing re:
 import re
 
-# actual function:
+
 def sentence_segment(txt):
     """
-    txt (str): Text which you want to be segmented into
-    sentences.
+    txt (str): Text which you want to be segmented into sentences.
+
+    hint: look up the re.split() function in the re module and 
+    and .split() method for strings.
 
     Example:
     >>> txt = "NLP is very cool. It is also useful"
@@ -68,8 +68,15 @@ def sentence_segment(txt):
     # use our regex:
     splittet = [w.replace("\n", "") for w in re.split(p1, txt)]
 
-    print(splittet)
+    return splittet
 
+
+"""
+** look into re.compile. 
+** look at "look ahead". 
+** NB: how do we make sure not 
+to split A. B. Bernhard (for instance)
+"""
 
 # questions: is re.compile smarter in some way?
 
@@ -77,7 +84,12 @@ def sentence_segment(txt):
 segmented = sentence_segment(txt)
 print(segmented)
 
-### using a list comprehension:
+
+txt = "This is a sentence. Another one"
+txt_new = sentence_segment(txt)
+print(txt_new)
+
+
 def tokenize(sentences):
     """
     sentences (list): Sentences which you want to be tokenized
@@ -87,6 +99,8 @@ def tokenize(sentences):
     >>> tokenize(sent)
     [["NLP", "is", "very", "cool"], ["It", "is", "also", "useful"]]
     """
+    pass
+
     output = [b.split() for b in sentences]
     return output
 
@@ -95,11 +109,12 @@ def tokenize(sentences):
 tokenized = tokenize(segmented)
 print(tokenized)
 
-# this one does it for one list:
+
 def n_grams(tokenlist, n):
     """
     tokenlist (list): A list of tokens
     n (int): Indicate the n in n-gram. n=2 denotes bigrams
+    Indicate the n in n-gram. n=2 denotes bigrams
 
     creates n-grams from a given tokenlist
 
@@ -108,6 +123,7 @@ def n_grams(tokenlist, n):
     >>> n_grams(tokens, n=2)
     [["NLP", "is"], ["is", "very"], ["very", "cool"]]
     """
+    pass
 
     # initialization:
     master_list = []  # empty list:
@@ -125,28 +141,34 @@ def n_grams(tokenlist, n):
     # return:
     return master_list
 
+    # testing n_grams:
 
-# testing n_grams:
+
 tokenlist = ["NLP", "is", "very", "useful"]
 print(n_grams(tokenlist, 1))
 print(n_grams(tokenlist, 2))
 print(n_grams(tokenlist, 3))
 print(n_grams(tokenlist, 4))
 
-# this one does it for list of lists:
-def n_grams2(tokenlist, n):
-    """
-    tokenlist (list): A list of tokens
-    n (int): Indicate the n in n-gram. n=2 denotes bigrams
 
-    creates n-grams from a given tokenlist
+def ner_regex(sentence_list):
+    """
+    sentence_list (list): a list of sentences
+
+    Named entity recognition using regular expressions.
+
+    alternative options:could also be a list of tokens and/or the raw text.
+    This will result in how you can you can use it later on, but for now
+    let's not dwell too much on this.
+
+    hint: look into the re package/module
 
     Example:
-    >>> tokens = ["NLP", "is", "very", "cool"]
-    >>> n_grams(tokens, n=2)
-    [["NLP", "is"], ["is", "very"], ["very", "cool"]]
+    >>> sent = [["Karl Friston is very cool"], ["Darwin is kick-ass"]]
+    >>> ner_regex(sent)
+    [["Karl Friston"], ["Darwin"]]
     """
-
+    pass
     # initialization:
     lst_complete = []  # empty list.
     lst_sentence = []  # empty list.
@@ -181,6 +203,8 @@ n_grammed = n_grams2(tokenized, 2)
 # Obviously this cannot distinguish anything
 # Starting a sentence (e.g., "I am" from "Michelle is").
 # So, it is very insufficient.
+
+
 def ner_regex(tokenlist):
     """
     tokenlist (list): A list of tokens
@@ -215,8 +239,11 @@ from collections import Counter
 def token_frequencies(tokenlist):
     """
     tokenlist (list): A list of tokens
+    could also be a list of token
 
     return a list of tokens and their frequencies
+
+    hint: look up the Counter class for python
 
     Example:
     >>> tokens = [["NLP", "is", "very", "cool"],
@@ -224,6 +251,7 @@ def token_frequencies(tokenlist):
     >>> token_frequencies(sent)
     {"NLP": 1, "is": 2, "very": 1, "cool": 1, "It": 1, "also": 1, "useful": 1}
     """
+    pass
     # initialize our counter/dictionary:
     token_frq = Counter()
 
@@ -244,24 +272,62 @@ tokens = [["NLP", "is", "very", "cool"], ["It", "is", "also", "useful"]]
 token_list = token_frequencies(tokens)
 token_list
 
-# lemmatization:
-# stolen from Kenneth:
 
-
-def lemmatize_stanza(tokenlist, processors, return_df=True, print_dependency=False):
+def lemmatize_stanza(tokenlist, return_df=False):
     """
     tokenlist (list): A list of tokens
 
     lemmatize a tokenlist using stanza
-    """
 
+    hint: examine the stanza_example.py script
+    """
+    pass
     import stanza
 
-    nlp = stanza.Pipeline(lang="en", processors=processors, tokenize_pretokenized=True)
+    nlp = stanza.Pipeline(
+        lang="en", processors="tokenize,lemma", tokenize_pretokenized=True
+    )
     doc = nlp(tokenlist)
 
     res = [
-        (n_sent, word.text, word.lemma, word.upos, word.xpos, word.head, word.deprel)
+        (word.lemma) for n_sent, sent in enumerate(doc.sentences) for word in sent.words
+    ]
+
+    if return_df:
+        import pandas as pd
+
+        return pd.DataFrame(res)
+    return res
+
+
+# testing the function:
+tl = [
+    ["This", "is", "tokenization", "done", "my", "way!"],
+    ["Sentence", "split,", "too!"],
+    ["Las", "Vegas", "is", "great", "city"],
+]
+
+# this works:
+lemmatize_stanza(tokenlist=tl, return_df=True)
+
+
+def postag_stanza(tokenlist):
+    """
+    tokenlist (list): A list of tokens
+
+    add a part-of-speech (POS) tag to each tokenlist using stanza
+
+    hint: examine the stanza_example.py script
+    """
+    pass
+
+    nlp = stanza.Pipeline(
+        lang="en", processors="pos,tokenize", tokenize_pretokenized=True
+    )
+    doc = nlp(tokenlist)
+
+    res = [
+        (word.postag_stanza)
         for n_sent, sent in enumerate(doc.sentences)
         for word in sent.words
     ]
@@ -280,20 +346,8 @@ tl = [
     ["Las", "Vegas", "is", "great", "city"],
 ]
 
-# this works:
-lemmatize_stanza(tokenlist=tl, processors="tokenize,lemma")
 
-# why doesn't this work?
-# lemmatize_stanza(tokenlist=t1, processors='lemma')
-
-
-def postag_stanza(tokenlist):
-    """
-    tokenlist (list): A list of tokens
-
-    add a part-of-speech (POS) tag to each tokenlist using stanza
-    """
-    pass
+postag_stanza(tokenlist=tl, return_df=True)
 
 
 class Text:
@@ -302,12 +356,22 @@ class Text:
         self.tokens = tokenize(self.sentences)
 
     def ner(self, method="regex"):
-        res = ner_regex(self.tokens)
+        if method == "regex":
+            res = ner_regex(self.tokens)
+        else:
+            raise ValueError(f"method {method} is not a valid method")
         return res
+
+    # add methods to do pos-tagging, lemmatization
+    # n-grams and token frequencies
 
     def get_df(self):
         """
         returns a dataframe containing the columns:
-        sentence number, token, lemma, pos-tag, named-entity
+        sentence number, token, lemma, pos-tag
+        andd optionally named-entities
         """
         pass
+
+    # add methods to extract tokens, sentences
+    # ner, pos-tags etc.
