@@ -35,8 +35,8 @@ Additional stuff which you might add is:
 
 
 # string to test on:
-txt = """These are several sentences. They will be splittet a lot. It is inevitable. It will happen although J.D. Gould
-would like it to be otherwise, or se he says.
+txt = """These are several sentences. They will be splittet a lot. It is inevitable. 
+It will happen although J.D. Gould would like it to be otherwise, or se he says.
 This sentence tests (or intends to) test parenthes
 and exclamations! At least that was the plan.
 Another thing one might do is the following: testing this.
@@ -195,7 +195,7 @@ def ner_regex(tokenlist):
     import re
 
     # capture group and non-capture groups:
-    pattern = re.compile(r"((?:[A-Z][a-z]+)(?:\s[A-Z][a-z]+)?)")
+    pattern = re.compile(r"(?<!^)([A-Z][a-z]+)")
 
     # using findall and compile from re.
     lst = []
@@ -234,7 +234,7 @@ def token_frequencies(tokenlist):
 
     # unlist (we don't care about which sentence for now):
     # this probably only works for "once" nested..
-    tokens_list = [item for sublist in tokens for item in sublist]
+    tokens_list = [item for sublist in tokenlist for item in sublist]
 
     # https://docs.python.org/2/library/collections.html
     for word in tokens_list:
@@ -302,8 +302,36 @@ def postag_stanza(tokenlist, return_df=False):
 
 ### new super-function which returns everything ###
 
+## trouble-shooting:
+print(sentence_reg)
 
-def stanza_panda(tokenlist, return_df=True):
+lst = []
+for n, sentence in enumerate(sentence_reg):
+    print(n + 1)
+    print(sentence)
+    if sentence == []:
+        placeholder = (n + 1, "None", False)
+        lst.append(placeholder)
+    if sentence != []:
+        for i in sentence:
+            placeholder = (n + 1, i, True)
+            lst.append(placeholder)
+    placeholder = None
+
+lst
+
+import pandas as pd
+
+testFrame = pd.DataFrame(lst, columns=["sentence num", "token", "ner"])
+
+testFrame
+
+#
+ners_clean = [(n_sentence + 1, sent) for n_sentence, sent in enumerate(sentence_reg)]
+ners_clean
+
+
+def stanza_panda(segmented, tokenlist, return_df=True):
     """
     write doc-string.
     """
@@ -330,6 +358,10 @@ def stanza_panda(tokenlist, return_df=True):
         for word in sent.words
     ]
 
+    # NER on sentences:
+    # ners = ner_regex(segmented)
+    # ners_clean = [(n_sentence + 1,) for n_sentence, sent in enumerate(ners)]
+
     ## return pandas dataframe ##
     if return_df:
         import pandas as pd
@@ -342,4 +374,10 @@ def stanza_panda(tokenlist, return_df=True):
 
 # testing:
 print(sentence_tok)
-print(stanza_panda(sentence_tok))
+stanza_test = stanza_panda(sentence_seg, sentence_tok, True)
+stanza_test
+testFrame
+
+## combining:
+combined = pd.DataFrame.merge([stanza_test, testFrame])
+combined
