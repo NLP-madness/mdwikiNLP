@@ -31,6 +31,18 @@ def train_test_split(df, test_pct=0.2, downsample=True):
 
     return train_df, test_df
 
+################
+# break takes us outside of the forloop 
+
+# could also use sk learn to do what the function above does (split data into test/train)
+
+import numpy as np
+from sklearn.model_selection import train_test_split
+
+train_test_split((pd.read_csv("spam.csv", encoding="latin-1")) , test_size = .2)
+train, test = train_test_split((pd.read_csv("spam.csv", encoding="latin-1"), test_size = .2)
+
+#################
 
 def read_data(test_split=0.8):
     df = pd.read_csv("spam.csv", encoding="latin-1")
@@ -43,15 +55,21 @@ def read_data(test_split=0.8):
         return train, test
     return df
 
+#read_data(test_split=.8) # works :-)))))
+
+#####################
+for i in test["text"]:
+    print(i) 
+
+
+#####################
 
 def get_frec(txt):
     t = Text(txt)
     return t.get_frequencies()
 
-
 def remove_counts_less_than(counter, n=2):
     return Counter({k: count_ham[k] for k in count_ham if count_ham[k] > n-1}) 
-
 
 def get_counts(df):
     count_spam = Counter()
