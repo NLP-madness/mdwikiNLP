@@ -20,7 +20,7 @@ class Text:
         sentence number, token, lemma, pos-tag, named-entity
         """
 
-        panda_df = stanza_panda(self.tokens)
+        panda_df = stanza_panda(self.sentences, self.tokens)
         return panda_df
 
 
