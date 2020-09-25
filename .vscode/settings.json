@@ -1,8 +1,0 @@
-{
-<<<<<<< HEAD
-    "python.pythonPath": "/opt/anaconda3/envs/nlp/bin/python",
-=======
-    "python.pythonPath": "/home/victormp/anaconda3/envs/nlp/bin/python",
->>>>>>> cd586459128d06a65862cb3b268fb2abb863ed22
-    "python.formatting.provider": "black"
-}
