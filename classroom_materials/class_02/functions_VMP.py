@@ -114,6 +114,8 @@ sentence_tok = tokenize(sentence_seg)
 print(sentence_tok)
 
 ## n-grams (for unnested list):
+
+## recursion:
 def n_grams(tokenlist, n):
     """
     tokenlist (list): A list of tokens
