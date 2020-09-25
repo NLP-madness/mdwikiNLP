@@ -12,14 +12,30 @@ sys.path.insert(1, "../class_03/")
 from VMP_class_text import Text 
 
 ## Split into bing and bong. 
-def splitter(df, test_size = 0.2, downsample = True):
-    sk.model_selection_ 
+def splitter(df, test_pct = 0.2, downsample = True):
+    
+    # create mask (from Kenneth): 
+    mask = np.random.choice([0, 1], p=[1-test_pct, test_pct],
+                            size=df.shape[0])
+
+    # apply mask
+    df["mask"] = mask
+    test_df = df[df["mask"] == 1]
+    train_df = df[df["mask"] == 0]
 
 
 ## Reading the data: 
-def reader(df): 
-    data = pd.read_csv(df, encoding = "latin-1") #latin-1? 
+def read_split(txt, test_pct = 0.2): 
+
+    #reading data: 
+    data = pd.read_csv(txt, encoding = "latin-1") #latin-1? 
     data = data[["v1", "v2"]] #this is where the information is.
+    data.columns = ["category", "text"]
+
+    #splitting (if we do so): 
+    if test_pct: 
+        pass 
+    return data 
 
 
 reader("spam.csv")
