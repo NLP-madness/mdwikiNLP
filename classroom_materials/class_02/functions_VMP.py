@@ -318,7 +318,7 @@ for n, sentence in enumerate(sentence_reg):
             lst.append(placeholder)
     placeholder = None
 
-lst
+"""
 
 import pandas as pd
 
@@ -329,6 +329,7 @@ testFrame
 #
 ners_clean = [(n_sentence + 1, sent) for n_sentence, sent in enumerate(sentence_reg)]
 ners_clean
+"""
 
 
 def stanza_panda(segmented, tokenlist, return_df=True):
@@ -372,12 +373,19 @@ def stanza_panda(segmented, tokenlist, return_df=True):
     return res
 
 
+"""
 # testing:
 print(sentence_tok)
 stanza_test = stanza_panda(sentence_seg, sentence_tok, True)
 stanza_test
 testFrame
 
-## combining:
+## combining (based on order - does not work)
+combined = pd.concat([stanza_test, testFrame], axis=1, join="inner")
+combined
+
+## merge left?
+merged_left = pd.merge(left=stanza_test, right=testFrame, how='left', left_on='species_id', right_on='species_id')
 combined = pd.DataFrame.merge([stanza_test, testFrame])
 combined
+"""

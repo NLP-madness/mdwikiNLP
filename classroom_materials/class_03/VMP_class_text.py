@@ -14,6 +14,14 @@ class Text:
         res = ner_regex(self.sentences)  # that is the input we worked with..
         return res
 
+    def ngram(self, n=2):
+        res = n_grams2(self.tokens, n)
+        return res
+
+    def token_frq(self):
+        res = token_frequencies(self.tokens)
+        return res
+
     def get_df(self):
         """
         returns a dataframe containing the columns:
@@ -42,4 +50,13 @@ ClassMember1.tokens
 
 # Testing ner:
 ClassMember1.ner()  # some empty ones..
+
+# Testing get-df:
 ClassMember1.get_df()
+
+# Testing ngrams
+ClassMember1.ngram()
+ClassMember1.ngram(3)
+
+# Testing token frq:
+ClassMember1.token_frq()  # counter object returned.
