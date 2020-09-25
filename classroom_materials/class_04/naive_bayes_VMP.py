@@ -62,19 +62,79 @@ test, train = read_split("spam.csv", test_pct=0.2)
 test.head()
 train.head()
 
-# pseudo-code:
-dct = {}
-for i in test["text"]:
-    t = Text(i)
-    t_dict = t.token_frq()
-    dct.update(t_dict)
-
-dct
-
-for i in train:
-    t = Text(i)
-    # optionally n-gram frequencies.
-    t.token_frequencies()
+## add option to do by n-grams:
+def make_dct(df):
+    dct = {}
+    for i in df["text"]:
+        t = Text(i)
+        t_dict = t.token_frq()
+        dct.update(t_dict)
+    return dct
 
 
-## python challenge (numpy to condense script - fast).
+## run on the whole training set.
+def voc_size(df):
+    dct = {}
+    for i in df["text"]:
+        t = Text(i)
+        t_dict = t.token_frq()
+        dct.update(t_dict)
+    voc_size = len(dct)
+    return voc_size
+
+
+### TRYING OUT STUFF ###
+
+ham_dct
+j = "ham"
+f"{j}_dct"
+
+uniqueValues = train["category"].unique()
+
+dct_list = []
+for i in range(len(uniqueValues)):
+    levels = f"{uniqueValues[i]}_dct"
+    vars()[levels] = {}
+
+    dct_list.append(levels)
+
+dct_list
+
+### Function not ready yet (below)
+
+## train as input, split to categories:
+def dct_categories(df, column_class, column_txt):
+
+    ## finding number of categories:
+    unique_cat = df[column_class].unique()
+
+    for i in range(len(unique_cat)):
+        levels = f"{unique_cat[i]}_dct"
+        vars()[levels] = {}
+
+    for n, i in enumerate(train[column_txt]):
+        # find the class that i belongs to
+        iclass = train[column_class][n]
+
+        # create the token frequencies dct:
+        instance = Text(i)
+        token_frequencies = instance.token_frq()
+
+        for j in unique_cat:
+            if iclass == j:
+                break
+            else:
+                pass
+        #
+
+    # return list_of_dicts
+
+
+## does it work??
+print(dct_categories(train, "category", "text"))
+
+
+# check that the functions work:
+train_dct, test_dct = dct_train_test(train, test)
+
+## Naive Bayes
