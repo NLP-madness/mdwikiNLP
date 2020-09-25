@@ -33,30 +33,32 @@ class Text:
 
 
 # String to test out on :
-txt = """These are several sentences. They will be splittet a lot. It is inevitable. It will happen although J.D. Gould
-would like it to be otherwise, or se he says.
-This sentence tests (or intends to) test parenthes
-and exclamations! At least that was the plan.
-Another thing one might do is the following: testing this.
-Abbreviations like are tricky. Does this come to mind?
-I thought so. The little Martin Jr. thought it was good."""
+if __name__ == "__main__":
 
-# Testing it out - using the class:
-ClassMember1 = Text(txt)
+    txt = """These are several sentences. They will be splittet a lot. It is inevitable. It will happen although J.D. Gould
+    would like it to be otherwise, or se he says.
+    This sentence tests (or intends to) test parenthes
+    and exclamations! At least that was the plan.
+    Another thing one might do is the following: testing this.
+    Abbreviations like are tricky. Does this come to mind?
+    I thought so. The little Martin Jr. thought it was good."""
 
-# Testing the init:
-ClassMember1.sentences
-ClassMember1.tokens
+    # Testing it out - using the class:
+    ClassMember1 = Text(txt)
 
-# Testing ner:
-ClassMember1.ner()  # some empty ones..
+    # Testing the init:
+    ClassMember1.sentences
+    ClassMember1.tokens
 
-# Testing get-df:
-ClassMember1.get_df()
+    # Testing ner:
+    ClassMember1.ner()  # some empty ones..
 
-# Testing ngrams
-ClassMember1.ngram()
-ClassMember1.ngram(3)
+    # Testing get-df:
+    ClassMember1.get_df()
 
-# Testing token frq:
-ClassMember1.token_frq()  # counter object returned.
+    # Testing ngrams
+    ClassMember1.ngram()
+    ClassMember1.ngram(3)
+
+    # Testing token frq:
+    ClassMember1.token_frq()  # counter object returned.
