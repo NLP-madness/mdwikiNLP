@@ -27,7 +27,7 @@ sentence, the paragraph, the entire document). Our goal in this task is to look 
 an entire movie review and classify it as positive or negative.
 
 ## ALGORITHM
-You will be using Naive Bayes, following the pseudocode on page 7 of Chapter 6
+You will be using Naive Bayes, following the pseudocode on page 7 of Chapter 4
 of Jurafsky and Martin (3rd edition ms), using Laplace smoothing. Your classifier
 will use words as features, add the logprob scores for each token, and make a
 binary decision between positive and negative. You will also implement the
