@@ -39,13 +39,13 @@ You are not required to use the Anaconda Distribution, only recommended, however
 ## Visual Studio Code
 I will be using [Visual Studio Code](https://code.visualstudio.com) (VS code) as my code editor, I recommend you use it as well, but you are free to use any code editor you want. You can install it from their website. The reasons why I recommend it is due to its integration with GitHub, it wonderful extensions as well as it ability to co-edit code in a google docs style format. If you choose to download this I recommend the following extensions:
 
-|Extension| Usage | 
-|---|---|
-|Python | (for python integration) |
-|Live Share | (for a google doc like collaboration) |
-|Markdown All in One | (for editing markdown) |
-|Rainbow CSV |				(for convenient CSV editing) |
-|Code Spell Checker | (a spell checker for your specific language) |
+| Extension           | Usage                                        |
+| ------------------- | -------------------------------------------- |
+| Python              | (for python integration)                     |
+| Live Share          | (for a google doc like collaboration)        |
+| Markdown All in One | (for editing markdown)                       |
+| Rainbow CSV         | (for convenient CSV editing)                 |
+| Code Spell Checker  | (a spell checker for your specific language) |
 
 
 ## Github
@@ -68,24 +68,24 @@ installed using the command:
 
 where packagename in name of the package. Note that all of the packages listed below is included in the virtual environment setup guide
 
-|Package| Usage | 
-|----------|------------|
-| **General Python** |  |
-| numpy | (Mathematical plugin for vector and matrice manipulation) |
-| pandas | (Dataframe for python) |
-|jupyter | (for notebook style code editing) |
-|**Machine learning** |
-|gensim| |
-|tensorflow | (version 2 - for Keras)|
-|scikit-learn | (installed using sklearn) |
-| **Language** | |
-|nltk ||
-|stanza | (stanford’s NLP Framework) |
-|spacy |  (a NLP framework) |
-|flair| (Zalando Research’s NLP Framework) |
-|danlp | (a Danish NLP Framework built on flair) |
-|**Other**| |
-|flake8 | (a linter for python, i.e. an code spell checker) |
+| Package              | Usage                                                     |
+| -------------------- | --------------------------------------------------------- |
+| **General Python**   |                                                           |
+| numpy                | (Mathematical plugin for vector and matrice manipulation) |
+| pandas               | (Dataframe for python)                                    |
+| jupyter              | (for notebook style code editing)                         |
+| **Machine learning** |
+| gensim               |                                                           |
+| tensorflow           | (version 2 - for Keras)                                   |
+| scikit-learn         | (installed using sklearn)                                 |
+| **Language**         |                                                           |
+| nltk                 |                                                           |
+| stanza               | (stanford’s NLP Framework)                                |
+| spacy                | (a NLP framework)                                         |
+| flair                | (Zalando Research’s NLP Framework)                        |
+| danlp                | (a Danish NLP Framework built on flair)                   |
+| **Other**            |                                                           |
+| flake8               | (a linter for python, i.e. an code spell checker)         |
 
 
 

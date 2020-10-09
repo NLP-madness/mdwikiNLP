@@ -2,6 +2,10 @@
 This is an example of how to use stanza
 """
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> upstream/master
 def stanza_example(tokenlist, processors, return_df=True,
                    print_dependency=False):
     """
@@ -24,7 +28,9 @@ def stanza_example(tokenlist, processors, return_df=True,
     doc = nlp(tokenlist)
 
     res = [(n_sent, word.text, word.lemma, word.upos, word.xpos, word.head, word.deprel)
+           
            for n_sent, sent in enumerate(doc.sentences)
+           
            for word in sent.words]
 
     if return_df:

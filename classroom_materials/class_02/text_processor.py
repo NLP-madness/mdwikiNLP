@@ -27,6 +27,7 @@ Additional stuff which you might add is:
     Add plotting functionality for word frequencies
     Add plotting functionality for dependency trees
 """
+<<<<<<< HEAD
 
 import re
 
@@ -147,11 +148,22 @@ def postag_stanza(tokenlist):
     """
     pass
 
+=======
+from nlp_functions import lemmatize_stanza as lemma
+from tokenizer import *
+>>>>>>> upstream/master
 
 class Text():
     def __init__(self, txt):
         self.sentences = sentence_segment()
-        self.tokens = tokenize(self.sentences)
+
+
+    def tokenize(self, tokenizer="myown"):
+        if tokenizer == "myown":
+            self.tokens = tokenize(self.sentences)
+        if tokenizer == "stanza":
+            self.tokens = tokenize_stanza(self.sentences)
+
 
     def ner(self, method="regex"):
         if method == "regex":
@@ -173,3 +185,21 @@ class Text():
 
     # add methods to extract tokens, sentences
     # ner, pos-tags etc.
+
+Text("this is my text")
+Text.tokenize()
+Text.n_grams(n=2)
+Text.ner(method="regex")
+
+
+
+
+
+
+
+
+
+
+
+
+

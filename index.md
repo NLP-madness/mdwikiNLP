@@ -5,10 +5,10 @@ Natural Language Processing (Fall 2020)
 Overview 
 ---------------------
 
-|           | When?         | Where? | Who?                      |
-|-----------|---------------|--------|---------------------------|
-| Lecture | Wed 8-10 | 1252 - 204  | Rebekah Baglini |
-| Classroom | Fri 8-10   | 1441 - 110  | Kenneth Enevoldsen      |
+|           | When?    | Where?     | Who?               |
+| --------- | -------- | ---------- | ------------------ |
+| Lecture   | Wed 8-10 | 1252 - 204 | Rebekah Baglini    |
+| Classroom | Fri 8-10 | 1441 - 110 | Kenneth Enevoldsen |
 
 
 
@@ -52,22 +52,22 @@ Lesson Plan
 
 
 
-| Week | Watch/Read (for Wed lecture)      | Classroom (Fri)       | Exercises (due Fri 8am)  | Assignments (due Wed 8am)  |
-|------|-----------------------------------|------------------------|----------------------|------------------------|
-| 36   | [Introduction](class1.md)         | [Introduction and Setup](classroom_materials/class_01/class_01.md)        |                  |  [Intro survey](https://forms.gle/bpX7XwtbLnQA1niq7), [Join Slack](https://join.slack.com/t/nlpf20/shared_invite/zt-gt1xt61j-9MT8V84bQ1AeJUOF5nnTRg)            |
-| 37   | [Text processing](class2.md)      | [Preprocessing, Counts, and Collocations](classroom_materials/class_02/class_02.md) | [Study group exercises](class2.md)   | [Basic Python quiz](python.md) 		|
-| 38   | [Language modeling](class3.md)    | [Lemmatization and tagging](classroom_materials/class_03/class_03.md)| Ngrams			   | [HW1 Spamlord](https://classroom.github.com/g/HUL5pc63)|
-| 39   | [Classification I](class4.md)     | [Naive Bayes from scratch](classroom_materials/class_04/class_04.md)| NaiveBayes           |                        |
-| 40   | [Classification II](class5.md)    | Scikit-learn 			| 				       |[HW2 Sentiment](https://classroom.github.com/g/qUNponW_) |
-| 41   | [Information retrieval](class6.md)| Vectorization			| IR exercises  	   |                		|
-| 42   | [Project prep](class_break.md)    | BREAK                  | BREAK                | BREAK                  |
-| 43   | [Vector semantics](class7.md)     | Embeddings				|                      | Project pitch   		|
-| 44   | [NER/Relation extraction + Deep Learning](class8.md) | Clustering         |  NER/RE exercises |
-| 45   | [NLP in CogSci research](class9.md)| Huggingface transformers  |          |                        |
-| 46   | [Ethics in NLP](class10.md)       | Scraping data		    |           | Data/pipeline report     |
-| 47   | [NLP in industry](class11.md)     | Modal evaluation/validation |          | Ethics statement         |
-| 48   |         | Supervision   		   | Supervision              |                        |
-| 49   | [Poster instructions](posters.md) | Poster session 1        | Poster session 2       |   Final evaluation           |
+| Week | Watch/Read (for Wed lecture)                         | Classroom (Fri)                                                                     | Exercises (due Fri 8am)            | Assignments (due Wed 8am)                                                                                                                           |
+| ---- | ---------------------------------------------------- | ----------------------------------------------------------------------------------- | ---------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 36   | [Introduction](class1.md)                            | [Introduction and Setup](classroom_materials/class_01/class_01.md)                  |                                    | [Intro survey](https://forms.gle/bpX7XwtbLnQA1niq7), [Join Slack](https://join.slack.com/t/nlpf20/shared_invite/zt-gt1xt61j-9MT8V84bQ1AeJUOF5nnTRg) |
+| 37   | [Text processing](class2.md)                         | [Preprocessing, Counts, and Collocations](classroom_materials/class_02/class_02.md) | [Study group exercises](class2.md) | [Basic Python quiz](python.md)                                                                                                                      |
+| 38   | [Language modeling](class3.md)                       | [Lemmatization and tagging](classroom_materials/class_03/class_03.md)               | Ngrams                             | [HW1 Spamlord](https://classroom.github.com/g/HUL5pc63)                                                                                             |
+| 39   | [Classification I](class4.md)                        | [Naive Bayes from scratch](classroom_materials/class_04/class_04.md)                | NaiveBayes                         |                                                                                                                                                     |
+| 40   | [Classification II](class5.md)                       | [Scikit-learn](classroom_materials/class_05/class_05.md)                            |                                    | [HW2 Sentiment](https://classroom.github.com/g/qUNponW_)                                                                                            |
+| 41   | [Information retrieval](class6.md)                   | [Vectorization](classroom_materials/class_06/class_06.md)                           | IR exercises                       |                                                                                                                                                     |
+| 42   | [Project prep](class_break.md)                       | BREAK                                                                               | BREAK                              | BREAK                                                                                                                                               |
+| 43   | [Vector semantics](class7.md)                        | Embeddings                                                                          |                                    | Project pitch                                                                                                                                       |
+| 44   | [NER/Relation extraction + Deep Learning](class8.md) | Clustering                                                                          | NER/RE exercises                   |
+| 45   | [NLP in CogSci research](class9.md)                  | Huggingface transformers                                                            |                                    |                                                                                                                                                     |
+| 46   | [Ethics in NLP](class10.md)                          | Scraping data                                                                       |                                    | Data/pipeline report                                                                                                                                |
+| 47   | [NLP in industry](class11.md)                        | Modal evaluation/validation                                                         |                                    | Ethics statement                                                                                                                                    |
+| 48   |                                                      | Supervision                                                                         | Supervision                        |                                                                                                                                                     |
+| 49   | [Poster instructions](posters.md)                    | Poster session 1                                                                    | Poster session 2                   | Final evaluation                                                                                                                                    |
 
 
 

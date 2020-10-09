@@ -1,6 +1,5 @@
 # Class 4: Naive Bayes from scratch
 
-Note: Changes to this plan may occur
 
 ### TL:DR
  - Required:
