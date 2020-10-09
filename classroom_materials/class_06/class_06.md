@@ -20,17 +20,23 @@ During last class we only breifly touched upon text vectorization. The operation
 
 ## Plan for Class
 Due to the classroom size we will shift to a different classroom style similar to last class. 
-The introduction will again be in a form of a video. Which will include:
-* Examples of vectorization using n-grams, binary, stopwords and ones own tokenizer
-* Introduction to TF-IDF using scikit-learn
+~~The introduction will again be in a form of a video~~ The class introduction and exercises will be given as a script (Materials used in Class). Which will include:
 
-Following the video the goal is to see which studygroup can gain the best performance using only the `multinomialNB` as a classifier. Thus you are only allowed to optimize the preprocessing rather than the model itself.
+- Examples of vectorization using n-grams, binary, stopwords and using ones own tokenizer
 
-I will also add a video on using dimensionality reduction on the TF-IDF matrix, which you should watch halfway through the class
-Again I will be avaliable during class if needed.
+- Introduction to TF-IDF using scikit-learn
+
+- Introduction to Dimensionality reduction using PCA and LSA
+
+- Exercises
+
+Following the ~~video~~ script the goal is to see which studygroup can gain the best performance using only the `multinomialNB` as a classifier. Thus you are only allowed to optimize the preprocessing rather than the model itself.
+
+~~I will also add a video on using dimensionality reduction on the TF-IDF matrix, which you should watch halfway through the class~~
+Again I will be avaliable during class if needed. A zoom link will also be send out.
+
+
 ---
-
-
 
 ## AutoML
 During this and the previous class we searched for the best performing models, however there actually exist very good systems which can perform a similar search. For an introduction you can watch [this video by statquest](https://www.youtube.com/watch?v=SEwxvjfxxmE). For the more interested user I recommend that you check out these papers on auto-sklearn [(1)](http://papers.nips.cc/paper/5872-efficient-and-robust-automated-machine-learning.pdf) [(2)](https://library.oapen.org/bitstream/handle/20.500.12657/23012/1007149.pdf?sequence=1#page=119) as well as their [package](https://automl.github.io/auto-sklearn/master/). I haven't personally had time to experiment with this during class but AutoML is a growing field, also within NLP.
@@ -38,7 +44,7 @@ During this and the previous class we searched for the best performing models, h
 ---
 
 ## Materials used in Class
-Will be up later.
+[vectorization.ipynb](https://github.com/auNLP/mdwikiNLP/blob/master/classroom_materials/class_06/vectorization.ipynb)
 
 
 <!--
