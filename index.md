@@ -12,11 +12,11 @@ Overview
 
 
 
-**Cognitive Science Msc | Semester 1 | Fall 2020** 
+**Cognitive Science MSc | Semester 1 | Fall 2020** 
 
 The course addresses how we can approach theoretical and applied topics in human cognition using computational linguistics and natural language processing tools. The course also addresses key ethical topics that arise from the analysis of freely available natural language data, and in the development of natural language processing software and technologies. 
 
-This course builds on students’ background knowledge in statistics and statistical programming, and introduces students to working with large data sets. The course builds towards the data science course. The course introduces students to ethical and philosophical topics, which will be extended on in the data science course. The course prepares students for careers involving analysis of text and other forms of natural language data, and for careers involving development of natural language software. 
+This course builds on students’ background knowledge in statistics and statistical programming, and introduces students to working with large data sets. The course builds towards the data science course. The course introduces students to ethical and philosophical topics, which will be extended on in the data science course. The course prepares students for careers involving analysis of text and other forms of natural language data, and for careers involving the development of natural language software. 
 
    
 See the [course catalog](https://kursuskatalog.au.dk/en/course/101106/Natural-language-processing) for more information. 
@@ -43,8 +43,8 @@ In each row of the schedule, you'll see what you need to do to keep up with the 
 
 1. **Watch/Read** - Watch the videos and do weekly readings
 2. **Lecture/Exercises** - Attend Weds lecture and do exercises with your study group to deepen your understanding of the content 
-3. **Classroom** - Attend the classroom session for hands-on training in Python progrmaming  
-4. **Assignments** - Occassional assignments to prepare you for the final exam 
+3. **Classroom** - Attend the classroom session for hands-on training in Python programming  
+4. **Assignments** - Occasional assignments to prepare you for the final exam 
 
 
 Lesson Plan 
@@ -61,8 +61,8 @@ Lesson Plan
 | 40   | [Classification II](class5.md)                       | [Scikit-learn](classroom_materials/class_05/class_05.md)                            |                                    | [HW2 Sentiment](https://classroom.github.com/g/qUNponW_)                                                                                            |
 | 41   | [Information retrieval](class6.md)                   | [Vectorization](classroom_materials/class_06/class_06.md)                           | IR exercises                       |                                                                                                                                                     |
 | 42   | [Project prep](class_break.md)                       | BREAK                                                                               | BREAK                              | BREAK                                                                                                                                               |
-| 43   | [Vector semantics](class7.md)                        | Embeddings                                                                          |                                    | Project pitch (PeerGrade - BB!)                                                                                                                                    |
-| 44   | [NER/Relation extraction + Deep Learning](class8.md) | Clustering                                                                          | NER/RE exercises                   |
+| 43   | [Vector semantics](class7.md)                        | [Embeddings](classroom_materials/class_07/class_07.md)                              | Project pitch (PeerGrade - BB!)                               |                                                                                                                    |
+| 44   | [NER/Relation extraction + Deep Learning](class8.md) | Clustering                                                                          | NER/RE exercises                   |   |
 | 45   | [NLP in CogSci research](class9.md)                  | Huggingface transformers                                                            |                                    |                                                                                                                                                     |
 | 46   | [Ethics in NLP](class10.md)                          | Scraping data                                                                       |                                    | Data/pipeline report                                                                                                                                |
 | 47   | [NLP in industry](class11.md)                        | Modal evaluation/validation                                                         |                                    | Ethics statement                                                                                                                                    |
@@ -95,7 +95,7 @@ Assessment
 --------------
 
 ### Assessment/Academic goals 
-In the evaluation of the student's performance, emphasis is placed on the extent to which the student is able to:
+In the evaluation of the student's performance, the emphasis is placed on the extent to which the student is able to:
 
 **Knowledge**: 
 - contrast different natural language processing methods in terms of their strengths and weaknesses in different use contexts 
