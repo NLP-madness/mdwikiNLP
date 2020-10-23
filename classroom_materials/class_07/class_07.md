@@ -66,7 +66,7 @@ There is also other versions of Danish word embedding available (e.g. one traine
 ---
 
 ## Materials used in Class
-To be announced
+[Word2Vec.ipynb](https://github.com/auNLP/mdwikiNLP/blob/master/classroom_materials/class_07/Word2Vec.ipynb)
 
 ---
 ## Related Material
