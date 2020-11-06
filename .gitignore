@@ -6,3 +6,4 @@ classroom_materials/class_05/__pycache__/classification.cpython-38.pyc
 *.pyc
 classroom_materials/class_07/word2vec.model
 classroom_materials/class_07/word2vec.model.vectors.npy
+classroom_materials/class_09/GoogleNews-vectors-negative300.bin

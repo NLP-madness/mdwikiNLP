@@ -31,9 +31,7 @@ During class we will instead focus on:
 - (Alternatives to topic models)
 - (15 minutes guest talk)
 
-*parenthesis denote potentially*
-
-Note: that if you run the  
+*parenthesis denote potentially*  
 ---
 
 
